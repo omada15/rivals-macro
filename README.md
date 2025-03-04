@@ -1,4 +1,4 @@
-# rivals-macro
+# Rivals Macro
 iykyk
 
 # !IMPORTANT!
@@ -7,5 +7,5 @@ E.g.
 ```
 print("max is diddy")
 ```
-In the edit popup, try to explain what you did
+In the "Commit Changes" popup, try to explain what you did
 "Added important message"
