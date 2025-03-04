@@ -5,10 +5,14 @@ MainGui.Title := "Rivaler" ; makes the windo title Rivaler
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
+vAccount := ["Main", "Cpltk"]
+vWeapon := ["AR", "Sniper", "Minigun"]
+vMap := ["Arena", "Construct(NotFinished)"]
+
 TabCtrl.UseTab("Main") ; starts tab Main
-MainGui.Add("DDL", "vAccount", ["Main", "Cpltk"])
-MainGui.Add("DDL", "vWeapon", ["AR", "Sniper"])
-MainGui.Add("DDL", "vMap", ["Arena", "Construct(NotFinished)"])
+MainGui.Add("DDL", "vAccount", vAccount) ; 0,1
+MainGui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
+MainGui.Add("DDL", "vMap", vMap) ;0,1
 
 TabCtrl.UseTab("Settings") ; starts tab Settings
 MainGui.Add("Checkbox", "vOnTop", "Always on Top")
@@ -26,6 +30,6 @@ TabCtrl.UseTab() ; makes it so not using any tab
 CurrentAction := "Fun" ; variable
 
 MainGui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
-MainGui.Add("Text", "x35 y240 +BackgroundTrans", CurrentAction) ; changing variable 
+MainGui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable 
 
 MainGui.Show() ; shows the gui
