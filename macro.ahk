@@ -1,4 +1,6 @@
 ; Don't make function. these vars must be global
+; In math we are going to have to finish the save mechanism and getting outputs from the gui.
+
 ui := Gui() ; create the GUI
 ui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
 ui.Title := "Rivaler" ; makes the window title Rivaler
@@ -12,11 +14,16 @@ vMap := ["Arena", "Construct(NotFinished)"]
 
 tabs.UseTab("Main") ; starts tab Main
 ui.Add("DDL", "vAccount", vAccount) ; 0,1
+mainAccount :=  ui.value(ui.Add("DDL", "vAccount", vAccount))
 ui.Add("DDL", "vWeapon", vWeapon) ;0,1
+sniper := ui.value(ui.Add("DDL", "vWeapon", vWeapon))
 ui.Add("DDL", "vMap", vMap) ;0,1
+construction := ui.value(ui.Add("DDL", "vMap", vMap))
 
 tabs.UseTab("Settings") ; starts tab Settings
 ui.Add("Checkbox", "vOnTop", "Always on Top")
+; IsChecked := ControlGetChecked(Control , WinTitle, WinText, ExcludeTitle, ExcludeText)
+; AoT := IsChecked("vOnTop",)
 ui.Add("Text", , "Opacity")
 ui.Add("Slider", "vOpacity", 100)
 
