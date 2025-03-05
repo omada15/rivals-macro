@@ -1,5 +1,5 @@
 ; Declare global variables for each control (true/false or selected value)
-global vAccountChoice := "", vWeaponChoice := "", vMapChoice := "", vOnTop := false, vOpacity := 100, t = ""
+global vAccountChoice := "", vWeaponChoice := "", vMapChoice := "", vOnTop := false, vOpacity := 100
 
 
 ui := Gui() ; create the GUI
@@ -39,11 +39,11 @@ ui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable that indicates
 ui.Show() ; shows the gui after creating it
 
 ; Event handlers to update the global variables when controls change
-ui.OnEvent("vAccountChoice", "Change", "vAccountChoice")
-ui.OnEvent("vWeaponChoice", "Change", "vWeaponChoice")
-ui.OnEvent("vMapChoice", "Change", "vMapChoice")
-ui.OnEvent("vOnTop", "Check", "vOnTop")
-ui.OnEvent("vOpacity", "Change", "vOpacity")
+ui.OnEvent("vAccountChoice", "Change", "vAccountChoice") ;Error: Parameter #4 of Gui.Prototype.OnEvent requires a Number, but received a String.
+ui.OnEvent("vWeaponChoice", "Change", "vWeaponChoice") ;Error: Parameter #4 of Gui.Prototype.OnEvent requires a Number, but received a String.
+ui.OnEvent("vMapChoice", "Change", "vMapChoice") ;Error: Parameter #4 of Gui.Prototype.OnEvent requires a Number, but received a String.
+ui.OnEvent("vOnTop", "Check", "vOnTop") ;Error: Parameter #4 of Gui.Prototype.OnEvent requires a Number, but received a String.
+ui.OnEvent("vOpacity", "Change", "vOpacity") ;Error: Parameter #4 of Gui.Prototype.OnEvent requires a Number, but received a String.
 
 Press(key, time) {
     ;Send "{" key " down}"
