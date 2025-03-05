@@ -1,12 +1,12 @@
 MainGui := Gui() ; create the GUI
 MainGui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
-MainGui.Title := "Rivaler" ; makes the windo title Rivaler
+MainGui.Title := "Rivaler" ; makes the window title Rivaler
 
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
-vAccount := ["Main", "Cpltk"]
-vWeapon := ["AR", "Sniper", "Minigun"]
+vAccount := ["Main", "Cpltk"] 
+vWeapon := ["AR", "Sniper", "Minigun"] ; We will not be using minigun, but ok
 vMap := ["Arena", "Construct(NotFinished)"]
 
 TabCtrl.UseTab("Main") ; starts tab Main
@@ -20,14 +20,14 @@ MainGui.Add("Text", , "Opacity")
 MainGui.Add("Slider", "vOpacity", 100)
 
 TabCtrl.UseTab("Log") ; starts tab Log
-MainGui.Add("Text", , "Ligma")
+MainGui.Add("Text", , "Ligma") ; max why
 
 TabCtrl.UseTab("Credits") ; starts tab Credits
-MainGui.Add("Text", , "WillDing loves Logan")
+MainGui.Add("Text", , "WillDing loves Logan") ;such truth
 
 TabCtrl.UseTab() ; makes it so not using any tab
 
-CurrentAction := "Fun" ; variable
+CurrentAction := "Fun" ; we will be using "idle", "dueling", and "waiting" (for rematch)
 
 MainGui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
 MainGui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable 
