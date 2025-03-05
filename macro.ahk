@@ -8,6 +8,17 @@ ui.Title := "Rivaler" ; makes the window title Rivaler
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 tabs := ui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
+array_time_data := [] ; time keeper
+
+f1::{ ; timer
+    global
+    static toggle := false
+    if toggle := !toggle
+        start_stop:=A_TickCount
+    else
+        array_time_data.Push(A_TickCount-start_stop)
+}
+
 vAccount := ["Main", "Cpltk"] 
 vWeapon := ["AR", "Sniper"] 
 vMap := ["Arena", "Construct(NotFinished)"]
@@ -28,6 +39,7 @@ ui.Add("Text", , "Opacity")
 ui.Add("Slider", "vOpacity", 100)
 
 tabs.UseTab("Log") ; starts tab Log
+ui.Add("Text", , array_time_data)
 ui.Add("Text", , "TestingText(WillFinishLater)") ; 
 
 tabs.UseTab("Credits") ; starts tab Credits
