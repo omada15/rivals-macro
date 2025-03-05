@@ -1,35 +1,50 @@
 MainGui := Gui() ; create the GUI
 MainGui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
-MainGui.Title := "Rivaler" ; makes the window title Rivaler
+MainGui.Title := "Rivaler" ; makes the windo title Rivaler
+
+CurrentValue := 0
+
 
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
-vAccount := ["Main", "Cpltk"] 
-vWeapon := ["AR", "Sniper", "Minigun"] ; We will not be using minigun, but ok
+vAccount := ["Mainacc", "Cpltk"]
+vWeapon := ["AR", "Sniper", "Minigun"]
 vMap := ["Arena", "Construct(NotFinished)"]
 
 TabCtrl.UseTab("Main") ; starts tab Main
-MainGui.Add("DDL", "vAccount", vAccount) ; 0,1
-MainGui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
-MainGui.Add("DDL", "vMap", vMap) ;0,1
+GuiCtrl := MainGui.Add("DDL", "vAccount", vAccount) ; 0,1
+;CurrentValue:= GuiCtrl.Type()
+;vAccountB := CurrentValue
+
+GuiCtrl := MainGui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
+;CurrentValue := GuiCtrl.Type()
+;vWeaponB := CurrentValue
+
+GuiCtrl := MainGui.Add("DDL", "vMap", vMap)
+;CurrentValue := GuiCtrl.Type()
+;vMapB := CurrentValue
 
 TabCtrl.UseTab("Settings") ; starts tab Settings
-MainGui.Add("Checkbox", "vOnTop", "Always on Top")
+GuiCtrl := MainGui.Add("Checkbox", "vOnTop", "Always on Top")
+; isChecked := ControlGetChecked(Control [, WinTitle, WinText, ExcludeTitle, ExcludeText]) idk how this works
+
 MainGui.Add("Text", , "Opacity")
 MainGui.Add("Slider", "vOpacity", 100)
 
+LastAction := "Something"
+
 TabCtrl.UseTab("Log") ; starts tab Log
-MainGui.Add("Text", , "Ligma") ; max why
+MainGui.Add("Text", , LastAction)
 
 TabCtrl.UseTab("Credits") ; starts tab Credits
-MainGui.Add("Text", , "WillDing loves Logan") ;such truth
+MainGui.Add("Text", , "WillDing loves Logan")
 
 TabCtrl.UseTab() ; makes it so not using any tab
 
-CurrentAction := "Fun" ; we will be using "idle", "dueling", and "waiting" (for rematch)
+CurrentAction := "Fun" ; variable
 
 MainGui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
-MainGui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable 
-
+MainGui.Add("Text", "x35 y240 +BackgroundTrans", CurrentAction) ; changing variable 
+ 
 MainGui.Show() ; shows the gui
