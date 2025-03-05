@@ -5,7 +5,7 @@ iykyk
 Try to explain what you did when updating code
 E.g. 
 ```
-print("max is diddy")
+print("dilliam wing")
 ```
 In the "Commit Changes" popup, try to explain what you did
 "Added important message"
