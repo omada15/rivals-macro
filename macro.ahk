@@ -25,16 +25,11 @@ vMap := ["Arena", "Construct(NotFinished)"]
 
 tabs.UseTab("Main") ; starts tab Main
 ui.Add("DDL", "vAccount", vAccount) ; 0,1
-mainAccount :=  ui.value(ui.Add("DDL", "vAccount", vAccount))
 ui.Add("DDL", "vWeapon", vWeapon) ;0,1
-sniper := ui.value(ui.Add("DDL", "vWeapon", vWeapon))
 ui.Add("DDL", "vMap", vMap) ;0,1
-construction := ui.value(ui.Add("DDL", "vMap", vMap))
 
 tabs.UseTab("Settings") ; starts tab Settings
 ui.Add("Checkbox", "vOnTop", "Always on Top")
-; IsChecked := ControlGetChecked(Control , WinTitle, WinText, ExcludeTitle, ExcludeText)
-; AoT := IsChecked("vOnTop",)
 ui.Add("Text", , "Opacity")
 ui.Add("Slider", "vOpacity", 100)
 
@@ -98,3 +93,17 @@ try {
     Msgbox "There was an error: " err.message
 }
 
+
+; New code to handle setting variables based on the dropdown selections
+
+uiAddHandler := Func("DropdownHandler")
+ui.Add("DDL", "vAccount gDropdownHandler", vAccount)
+ui.Add("DDL", "vWeapon gDropdownHandler", vWeapon)
+ui.Add("DDL", "vMap gDropdownHandler", vMap)
+
+DropdownHandler() {
+    global mainAccount, sniper, construction
+    mainAccount := (ui.Value("vAccount") = "Main")
+    sniper := (ui.Value("vWeapon") = "Sniper")
+    construction := (ui.Value("vMap") = "Construct(NotFinished)")
+}
