@@ -9,7 +9,7 @@ TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
 vAccount := ["Mainacc", "Cpltk"]
-vWeapon := ["AR", "Sniper", "Minigun"]
+vWeapon := ["AR", "Sniper"]
 vMap := ["Arena", "Construct(NotFinished)"]
 
 TabCtrl.UseTab("Main") ; starts tab Main
