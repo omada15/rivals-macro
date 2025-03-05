@@ -1,50 +1,94 @@
-MainGui := Gui() ; create the GUI
-MainGui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
-MainGui.Title := "Rivaler" ; makes the windo title Rivaler
+ui := Gui() ; create the GUI
+ui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
+ui.Title := "Rivaler" ; makes the windo title Rivaler
 
 CurrentValue := 0
 
 
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
-TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
+tabs := ui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
 vAccount := ["Mainacc", "Cpltk"]
 vWeapon := ["AR", "Sniper"]
 vMap := ["Arena", "Construct(NotFinished)"]
 
-TabCtrl.UseTab("Main") ; starts tab Main
-GuiCtrl := MainGui.Add("DDL", "vAccount", vAccount) ; 0,1
+tabs.UseTab("Main") ; starts tab Main
+GuiCtrl := ui.Add("DDL", "vAccount", vAccount) ; 0,1
 ;CurrentValue:= GuiCtrl.Type()
 ;vAccountB := CurrentValue
 
-GuiCtrl := MainGui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
+GuiCtrl := ui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
 ;CurrentValue := GuiCtrl.Type()
 ;vWeaponB := CurrentValue
 
-GuiCtrl := MainGui.Add("DDL", "vMap", vMap)
+GuiCtrl := ui.Add("DDL", "vMap", vMap)
 ;CurrentValue := GuiCtrl.Type()
 ;vMapB := CurrentValue
 
-TabCtrl.UseTab("Settings") ; starts tab Settings
-GuiCtrl := MainGui.Add("Checkbox", "vOnTop", "Always on Top")
+tabs.UseTab("Settings") ; starts tab Settings
+GuiCtrl := ui.Add("Checkbox", "vOnTop", "Always on Top")
 ; isChecked := ControlGetChecked(Control [, WinTitle, WinText, ExcludeTitle, ExcludeText]) idk how this works
 
-MainGui.Add("Text", , "Opacity")
-MainGui.Add("Slider", "vOpacity", 100)
+ui.Add("Text", , "Opacity")
+ui.Add("Slider", "vOpacity", 100)
 
 LastAction := "Something"
 
-TabCtrl.UseTab("Log") ; starts tab Log
-MainGui.Add("Text", , LastAction)
+tabs.UseTab("Log") ; starts tab Log
+ui.Add("Text", , LastAction)
 
-TabCtrl.UseTab("Credits") ; starts tab Credits
-MainGui.Add("Text", , "WillDing loves Logan")
+tabs.UseTab("Credits") ; starts tab Credits
+ui.Add("Text", , "WillDing loves Logan")
 
-TabCtrl.UseTab() ; makes it so not using any tab
+tabs.UseTab() ; makes it so not using any tab
 
 CurrentAction := "Fun" ; variable
 
-MainGui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
-MainGui.Add("Text", "x35 y240 +BackgroundTrans", CurrentAction) ; changing variable 
+ui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
+ui.Add("Text", "x35 y240 +BackgroundTrans", CurrentAction) ; changing variable 
  
-MainGui.Show() ; shows the gui
+ui.Show() ; shows the gui
+
+Press(key, time) {
+    ;Send "{" key " down}"
+    Sleep time
+    ;Send "{" key " up}"
+}
+log(t) { ; please let those variables be global, if not imma kill myself
+    global tabs
+    tabs.UseTab("Log")
+    global ui
+    ui.Add("Text", , t)
+    tabs.UseTab()
+}
+
+Arena() {
+    log("Started Arena Movement")
+    Press("w", 800)
+    Press("d", 1500)
+    Press("w", 500)
+    Press("a", 1100)
+    Send 1
+    sleep 500
+
+    Send "{Rbutton Down}"
+    Send "{Lbutton Down}"
+    Sleep 2000
+    Send "{Lbutton Up}"
+    Send "{Rbutton up}"
+}
+
+try {
+    if true {
+        tabs.UseTab("Log")
+        ui.Add("Text", , "Roblox not found")
+        log("hi")
+        ;WinActivate("Roblox")
+        Arena()
+        Msgbox "done"
+    } else {
+        Msgbox "sped diddy kong"
+    }
+} catch Error as err {
+    throw err
+}

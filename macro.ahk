@@ -21,7 +21,7 @@ ui.Add("Text", , "Opacity")
 ui.Add("Slider", "vOpacity", 100)
 
 tabs.UseTab("Log") ; starts tab Log
-ui.Add("Text", , "Ligma") ; max why
+ui.Add("Text", , "Balls") ; max why
 
 tabs.UseTab("Credits") ; starts tab Credits
 ui.Add("Text", , "WillDing loves Logan") ; We hold these truths to be self evident
@@ -36,9 +36,9 @@ ui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable
 ui.Show() ; shows the gui
 
 Press(key, time) {
-    Send "{" key " down}"
+    ;Send "{" key " down}"
     Sleep time
-    Send "{" key " up}"
+    ;Send "{" key " up}"
 }
 log(t) { ; please let those variables be global, if not imma kill myself
     tabs.UseTab("Log")
@@ -63,8 +63,12 @@ Arena() {
 }
 
 try {
-    if WinExist("Roblox") {
+    tabs.UseTab("Log")
+    ui.Add("Text", , t)
+    tabs.UseTab()
+    if !WinExist("Roblox") {
         WinActivate("Roblox")
+        log("hi")
         Arena()
         Msgbox "done"
     } else {
