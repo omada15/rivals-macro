@@ -12,7 +12,7 @@ vMap := ["Arena", "Construct(NotFinished)"]
 
 tabs.UseTab("Main") ; starts tab Main
 ui.Add("DDL", "vAccount", vAccount) ; 0,1
-ui.Add("DDL", "vWeapon", vWeapon) ;0,1,2
+ui.Add("DDL", "vWeapon", vWeapon) ;0,1
 ui.Add("DDL", "vMap", vMap) ;0,1
 
 tabs.UseTab("Settings") ; starts tab Settings
@@ -21,19 +21,19 @@ ui.Add("Text", , "Opacity")
 ui.Add("Slider", "vOpacity", 100)
 
 tabs.UseTab("Log") ; starts tab Log
-ui.Add("Text", , "Balls") ; max why
+ui.Add("Text", , "TestingText(WillFinishLater)") ; 
 
 tabs.UseTab("Credits") ; starts tab Credits
-ui.Add("Text", , "WillDing loves Logan") ; We hold these truths to be self evident
+ui.Add("Text", , "Dilliam Wing wants Logan in his life forever") ; We hold these truths to be self evident
 
 tabs.UseTab() ; makes it so not using any tab
 
 CurrentAction := "Fun" ; we will be using "idle", "dueling", and "waiting" (for rematch)
 
 ui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
-ui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable 
+ui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable that indicates action
 
-ui.Show() ; shows the gui
+ui.Show() ; shows the gui after creating it
 
 Press(key, time) {
     ;Send "{" key " down}"
