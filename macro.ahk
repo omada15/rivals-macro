@@ -7,7 +7,7 @@ TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
 tabs := ui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
 vAccount := ["Main", "Cpltk"] 
-vWeapon := ["AR", "Sniper"]
+vWeapon := ["AR", "Sniper"] 
 vMap := ["Arena", "Construct(NotFinished)"]
 
 tabs.UseTab("Main") ; starts tab Main
@@ -64,7 +64,7 @@ Arena() {
 
 try {
     tabs.UseTab("Log")
-    ui.Add("Text", , t)
+    ui.Add("Text", , t) ;Warning: This global variable appears to never be assigned a value. SPECIFICALLY T
     tabs.UseTab()
     if !WinExist("Roblox") {
         WinActivate("Roblox")
@@ -77,3 +77,4 @@ try {
 } catch Error as err {
     Msgbox "There was an error: " err.message
 }
+
