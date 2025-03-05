@@ -25,6 +25,7 @@ ui.Add("Text", , "TestingText(WillFinishLater)") ;
 
 tabs.UseTab("Credits") ; starts tab Credits
 ui.Add("Text", , "Dilliam Wing wants Logan in his life forever") ; We hold these truths to be self evident
+ui.Add("Text", ,"Creators: WHY_WILe and willlovesfun") ; we need to frame them
 
 tabs.UseTab() ; makes it so not using any tab
 
