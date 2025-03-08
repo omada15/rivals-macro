@@ -1,14 +1,17 @@
 ; Don't make function. these vars must be global
 ; In math we are going to have to finish the save mechanism and getting outputs from the gui.
 
-ui := Gui() ; create the GUI
-ui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
-ui.Title := "Rivaler" ; makes the window title Rivaler
+MainGui := Gui() ; create the GUI
+MainGui.Name := "Rivaler" ; names the window Rivaler (idk what that does)
+MainGui.Title := "Rivaler" ; makes the windo title Rivaler
+
+CurrentValue := 0
+
 
 TabArr := ["Main", "Settings", "Log", "Credits"] ; creates a list of tabs
-tabs := ui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
+TabCtrl := MainGui.Add("Tab", "x0 y-1 w500 h240 -Wrap", TabArr) ; creates the tabs
 
-array_time_data := [] ; time keeper
+array_time_data := []
 
 f1::{ ; timer
     global
@@ -19,41 +22,42 @@ f1::{ ; timer
         array_time_data.Push(A_TickCount-start_stop)
 }
 
-vAccount := ["Main", "Cpltk"] 
-vWeapon := ["AR", "Sniper"] 
-vMap := ["Arena", "Construct(NotFinished)"]
 
-tabs.UseTab("Main") ; starts tab Main
-ui.Add("DDL", "vAccount", vAccount) ; 0,1
-mainAccount :=  ui.value(ui.Add("DDL", "vAccount", vAccount))
-ui.Add("DDL", "vWeapon", vWeapon) ;0,1
-sniper := ui.value(ui.Add("DDL", "vWeapon", vWeapon))
-ui.Add("DDL", "vMap", vMap) ;0,1
-construction := ui.value(ui.Add("DDL", "vMap", vMap))
+TabCtrl.UseTab("Main") ; starts tab Main
+GuiCtrl := MainGui.Add("Text",, "Alt?")
+GuiCtrl := MainGui.Add("Checkbox", "vAlt", "")
 
-tabs.UseTab("Settings") ; starts tab Settings
-ui.Add("Checkbox", "vOnTop", "Always on Top")
-; IsChecked := ControlGetChecked(Control , WinTitle, WinText, ExcludeTitle, ExcludeText)
-; AoT := IsChecked("vOnTop",)
-ui.Add("Text", , "Opacity")
-ui.Add("Slider", "vOpacity", 100)
+GuiCtrl := MainGui.Add("Text",, "Sniper?")
+GuiCtrl := MainGui.Add("Checkbox", "vSniper", "")
 
-tabs.UseTab("Log") ; starts tab Log
-ui.Add("Text", , array_time_data)
-ui.Add("Text", , "TestingText(WillFinishLater)") ; 
 
-tabs.UseTab("Credits") ; starts tab Credits
-ui.Add("Text", , "Dilliam Wing wants Logan in his life forever") ; We hold these truths to be self evident
-ui.Add("Text", ,"Creators: WHY_WILe and willlovesfun") ; we need to frame them
+GuiCtrl := MainGui.Add("Text",, "Construction? (Risky)")
+GuiCtrl := MainGui.Add("Checkbox", "vConstruction", "")
 
-tabs.UseTab() ; makes it so not using any tab
+TabCtrl.UseTab("Settings") ; starts tab Settings
+GuiCtrl := MainGui.Add("Checkbox", "vOnTop", "Always on Top")
+; isChecked := ControlGetChecked(Control [, WinTitle, WinText, ExcludeTitle, ExcludeText]) idk how this works
 
-CurrentAction := "Fun" ; we will be using "idle", "dueling", and "waiting" (for rematch)
 
-ui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
-ui.Add("Text", "x35 y240 +BackgroundTrans", ) ; changing variable that indicates action
+MainGui.Add("Text", , "Opacity")
+MainGui.Add("Slider", "vOpacity", 100)
 
-ui.Show() ; shows the gui after creating it
+LastAction := "Something"
+
+TabCtrl.UseTab("Log") ; starts tab Log
+MainGui.Add("Text", , LastAction)
+
+TabCtrl.UseTab("Credits") ; starts tab Credits
+MainGui.Add("Text", , "WillDing loves Logan")
+
+TabCtrl.UseTab() ; makes it so not using any tab
+
+CurrentAction := "Fun" ; variable
+
+MainGui.Add("Text", "x0 y240 +BackgroundTrans", "Status:") ; creates Status name
+MainGui.Add("Text", "x35 y240 +BackgroundTrans", CurrentAction) ; changing variable 
+ 
+MainGui.Show() ; shows the gui
 
 Press(key, time) {
     ;Send "{" key " down}"
